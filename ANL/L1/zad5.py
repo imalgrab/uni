@@ -23,16 +23,15 @@ print(sin(math.pi / 6, 5))
 print(math.sin(math.pi / 6))
 
 
-def sinFrac(x, k):
-    def aux(a, b, i):
-        if (i > k):
-            return 0.0
-        return a*b*x*x / a*b - x*x + aux(a+1, b+2, i+1)
-    return x / (1 + aux(1, 1, 1))
-
-print(sinFrac(math.pi / 2, 5))
-        
-        
+def sinus(x):
+    def chain(a, b, i):
+        if i == 0:
+            return a * b - x * x
+        return (a * b - x * x) + (a*b*x*x / chain(a+2, b+2, i-1))
+    return x / (1 + (x*x / chain(2, 3, 900)))
+ 
+print (sinus(3.14))
     
+   
     
         
