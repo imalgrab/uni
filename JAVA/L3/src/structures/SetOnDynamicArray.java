@@ -8,11 +8,21 @@ public class SetOnDynamicArray extends SetOnArray {
     private int currentSize = INITIAL_SIZE;
     public Pair[] pairsArray;
 
+    /**
+     * konstruktor o zadanym rozmiarze 2
+     */
+
     public SetOnDynamicArray() {
         pairsArray = new Pair[INITIAL_SIZE];
     }
 
-    public boolean isInSet(Pair p) {
+    /**
+     * sprawdza czy para o podanym kluczu jest w zbiorze
+     * @param p
+     * @return true jezeli jest, false wpp
+     */
+
+    private boolean isInSet(Pair p) {
         for (Pair x :
                 pairsArray) {
             if (p.equals(x)) {
@@ -21,6 +31,10 @@ public class SetOnDynamicArray extends SetOnArray {
         }
         return false;
     }
+
+    /**
+     * przy braku miejsca nadpisujemy tablice nowa, dwa razy dluzsza
+     */
 
     private void resizeIfNeeded() {
         if (currentIndex >= currentSize) {
