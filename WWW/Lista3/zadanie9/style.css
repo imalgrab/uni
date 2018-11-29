@@ -1,0 +1,65 @@
+/* Mixin */
+.transition (@prop: all, @time: 1s, @ease: linear) {
+	-webkit-transition: @prop @time @ease;
+	-moz-transition: @prop @time @ease;
+	-o-transition: @prop @time @ease;
+	-ms-transition: @prop @time @ease;
+	transition: @prop @time @ease;
+}
+
+/* Implementation */
+#somediv {
+	.transition(all, 0.5s, ease-in);
+}
+
+#somediv:hover {
+  opacity: 0;
+}
+
+body {
+  background-color: #999999;
+  width: 1000px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blurredbg {
+  width: 250px;
+  height: auto;
+  position: relative;
+  transition: .5s;
+  margin: 4px;
+}
+
+.blurredbg img {
+  width: 200px;
+  height: 200px;
+  transition: .5s;
+  border-radius: 4px;
+}
+
+.blurredbg:hover img {
+  filter:blur(3px) brightness(70%);
+  box-shadow: 0px 0px 4px red;
+  width: 400px;
+  height: auto;
+}
+
+.blurredbg :not(img) {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0;
+  transition: .5s;
+}
+
+.blurredbg h2 {
+  top: 50%;
+}
+
+.blurredbg:hover :not(img) {
+  opacity: 1;
+}

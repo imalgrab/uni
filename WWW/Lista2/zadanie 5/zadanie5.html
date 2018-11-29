@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <title>L2Z5</title>
+  <meta charset = "utf-8"/>
+  <style media="screen">
+    div:first-of-type { background: red; }
+    div:last-of-type { background: blue; }
+    h2:only-of-type {background: magenta; }
+    p:nth-child(even) { background: yellow; }
+    p:nth-last-child(3) { background: green; }
+    p:nth-last-of-type(1) { background: purple; }
+    h1:last-child { background: Violet; }
+    :root { background: gray; }
+    h6:empty {
+      width: 200px;
+      height: 200px;
+      background: #ffffff;
+    }
+    a:not(:hover) { text-decoration: line-through; }
+
+    ::selection { color: white;}
+
+  </style>
+</head>
+<body>
+  <div class="">
+    #1 div
+  </div>
+  <div class="">
+    #2 div
+  </div>
+  <h2>h2 nr 1 and only</h2>
+  <div class="">
+    #3 div
+  </div>
+  <div class="">
+    #4 div
+  </div>
+  <p>paragraf1</p>
+  <p>paragraf2</p>
+  <a href="#">kazdy nie p jest przekreslony</a>
+  <p>paragraf3</p>
+  <p>paragraf4</p>
+  <p>paragraf5</p>
+  <p>1 od konca</p>
+  <h1>last child?</h1>
+  <h6></h6>
+
+</body>
+</html>

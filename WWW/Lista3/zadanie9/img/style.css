@@ -1,0 +1,10 @@
+body {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blurredbg {
+  width: 300px;
+  height: 300px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<title>L2Z1</title>
+	<meta charset = "UTF-8"/>
+	<style>
+		p { color: red; }
+		div { color: blue !important; }
+		h2 { color: red; }
+	</style>
+	<link rel="stylesheet" href="style1.css">
+
+</head>
+
+<!-- import style2 w style1 nie zmienia koloru dla <p> na niebieski, bo nizej nastepuje przypisanie wartosci czerwony -->
+<!-- ale jako iz w style1 nie ma zadnych informacji o tagu <div> to zostaje ten z style2 -->
+<!-- definicja stylu w tagu nadpisuje co bylo-->
+<!-- dzieki dodaniu !important pozniejsze zmiany nie zachodza -->
+
+<body>
+	<h1 style='color: yellow'>
+	tag h1
+	</h1>
+
+	<h2>
+	tag h2
+	</h2>
+
+	<div style='color: yellow'>
+		<!-- Wczesniej narzucony niebieski !important -->
+	tag div
+	</div>
+
+	<div class="">
+		<p>p wewnatrz div zachowuje swoje</p>
+	</div>
+
+	<p> <div class="">
+		div wewnatrz p tez zachowuje
+	</div> </p>
+
+	<p style='color: yellow'>
+	tag p, bylo czerwone</p>
+
+	<p>
+	tag p
+	</p>
+
+</body>
+</html>
