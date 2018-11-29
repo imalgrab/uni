@@ -1,0 +1,33 @@
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\bin\Debug\Calculator.exe
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\bin\Debug\Calculator.pdb
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.csprojAssemblyReference.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.exe
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.pdb
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.CalculatorMain.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator\Calculator\obj\Debug\Calculator.CalculatorValueForVariables.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\bin\Debug\Calculator.exe
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\bin\Debug\Calculator.pdb
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.csprojAssemblyReference.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.CalculatorMain.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.CalculatorValueForVariables.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.exe
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator — kopia\Calculator\obj\Debug\Calculator.pdb
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\bin\Debug\Calculator.exe
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\bin\Debug\Calculator.pdb
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.csprojAssemblyReference.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.CalculatorMain.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.CalculatorValueForVariables.resources
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.exe
+C:\Users\imal\Desktop\Uczelnia\PO\Calculator with variables\Calculator\obj\Debug\Calculator.pdb
