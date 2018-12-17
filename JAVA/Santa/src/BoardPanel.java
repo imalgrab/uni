@@ -26,7 +26,7 @@ public class BoardPanel extends JPanel implements KeyListener {
         this.width = width;
         this.gameBoard = new GameBoard(height, width);
         this.santa = new Santa(0, 8, gameBoard.getBoard());
-        this.kidsLeft = new JLabel(numOfVisitedKids + "/" + gameBoard.getNumOfKids());
+        this.kidsLeft = new JLabel(numOfVisitedKids + "/" + gameBoard.getNumOfKidsAsleep());
         add(kidsLeft);
         this.victory = new JLabel("Gratulacje, wygrales!");
         victory.setVisible(false);
@@ -117,10 +117,17 @@ public class BoardPanel extends JPanel implements KeyListener {
             for (Kid k :
                     gameBoard.getKids()) {
                 if (k.getX() == santa.getX() && k.getY() == santa.getY()) {
-                    k.setImg("Santa/gift.png");
-                    numOfVisitedKids++;
-                    kidsLeft.setText(numOfVisitedKids + "/" + gameBoard.getNumOfKids());
-                    if (numOfVisitedKids == gameBoard.getNumOfKids()) {
+                    if (k.isAsleep()) {
+                        k.setImg("Santa/gift.png");
+                        numOfVisitedKids++;
+                        kidsLeft.setText(numOfVisitedKids + "/" + gameBoard.getNumOfKidsAsleep());
+                    } else {
+                        victory.setText("Dzieci Cie nakryly!");
+                        victory.setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    }
+                    if (numOfVisitedKids == gameBoard.getNumOfKidsAsleep()) {
                         victory.setVisible(true);
                     }
                 }

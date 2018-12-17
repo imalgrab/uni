@@ -9,7 +9,7 @@ public class GameBoard {
         this.boardHeight = N;
         this.boardWidth = M;
         this.board = new Field[N][M];
-        this.kids = new Kid[10];
+        this.kids = new Kid[12];
         initializeBoard();
     }
 
@@ -99,7 +99,14 @@ public class GameBoard {
         return kids;
     }
 
-    public int getNumOfKids() {
-        return kids.length;
+    public int getNumOfKidsAsleep() {
+        int n = 0;
+        for (Kid k :
+                kids) {
+            if (k.isAsleep()) {
+                n++;
+            }
+        }
+        return n;
     }
 }
