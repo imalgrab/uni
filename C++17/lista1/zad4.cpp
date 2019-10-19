@@ -5,7 +5,7 @@ using namespace std;
 
 //silnie stypizowany enum: wlasny zakres wiazania oraz niepodatnosc na konwersje na liczby calkowite
 
-enum class imiona : uint16_t {
+enum imiona : uint16_t {
     anna,
     dorota,
     karolina,
