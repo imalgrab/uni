@@ -19,5 +19,12 @@ const fibRec = (n) => {
     return fibRec(n - 1) + fibRec(n - 2);
 }
 
-console.log(
-    fibIter(5));
+for (let i = 10; i <= 42; i++) {
+    console.time('fibRec : ' + i);
+    fibRec(i);
+    console.timeEnd('fibRec : ' + i);
+    console.time('fibIter : ' + i);
+    fibIter(i);
+    console.timeEnd('fibIter : ' + i);
+    console.log();
+}
