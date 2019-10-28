@@ -1,0 +1,11 @@
+var foo = 'foo';
+
+console.log(typeof foo); //"string"
+console.log(foo instanceof String); //false
+
+a) typeof - typ argumentu, w postaci łancucha znaków
+
+b) instanceof - czy dany argument jest utworzony okreslonym konstruktorem
+
+const number = new Number(3);
+console.log(number instanceof Number); TRUE

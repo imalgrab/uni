@@ -17,10 +17,17 @@ const car2 = {
 console.log(car.brand);
 console.log(car['brand']);
 console.log(car[2]);
-console.log(car2[1]);
+console.log(car2[car]);
 
 //(a)
 //  dot notation - nazwa zmiennej nie moze zaczynac sie od cyfry, nie moze zawierac spacji
+//  const zmienna = 'imie'
+//  const czlowiek = {
+//     imie: 'X'
+// }
+//  czlowiek[zmienna] OK
+//  czlowiek.zmienna NIE
+
 
 //(b)
 //  liczba - wszystko OK, jeżeli jakiś klucz to liczba
@@ -33,6 +40,9 @@ console.log(car2[1]);
 //  mozna - odpowiednio skroci lub zwiekszy tablice
 
 const customers = ['Bob', 'Adam', 'Tom', 'Richard'];
+const numbers = [1, 2, 3];
+numbers['Piotr'] = 3;
+console.log(numbers);
 console.log(customers['Adam']);
 console.log(customers[car]);
 customers['Adam'] = 49;
@@ -45,4 +55,6 @@ customers.length = 1;
 console.log(customers);
 
 
-
+const asdf = new Number(3);
+console.log(typeof asdf);
+console.log(asdf instanceof Number);
