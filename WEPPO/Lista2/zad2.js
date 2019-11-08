@@ -1,23 +1,27 @@
 const car = {
     brand: 'Toyota',
     'car model': 'Prius',
-    2: 2018,
+    year: 2018,
 }
 
 const car2 = {
     brand: 'Nissan',
     model: 'Micra',
-    year: 2003,
-    engine: {
-        horsePower: 110,
-        cc: 1198
+    year: 2003
+}
+
+const engine = {
+    horsePower: 110,
+    cc: 1198,
+    toString() {
+        return 'brand';
     }
 }
 
 console.log(car.brand);
 console.log(car['brand']);
 console.log(car[2]);
-console.log(car2[car]);
+console.log(car2[engine]);
 
 //(a)
 //  dot notation - nazwa zmiennej nie moze zaczynac sie od cyfry, nie moze zawierac spacji
@@ -41,19 +45,10 @@ console.log(car2[car]);
 
 const customers = ['Bob', 'Adam', 'Tom', 'Richard'];
 const numbers = [1, 2, 3];
-numbers['Piotr'] = 3;
-console.log(numbers);
-console.log(customers['Adam']);
-console.log(customers[car]);
-customers['Adam'] = 49;
-console.log(customers);
+customers['Tom'] = '42';
+customers['Nipsey'] = 5;
 
-customers.length = 6;
 console.log(customers);
-
-customers.length = 1;
-console.log(customers);
-
 
 const asdf = new Number(3);
 console.log(typeof asdf);
