@@ -26,11 +26,11 @@ function* fibonacci() {
 }
 
 var _it = fib();
-// for (var _result; _result = _it.next(), !_result.done;) {
-//     console.log(_result.value);
-// }
+for (var _result; _result = _it.next(), !_result.done;) {
+    console.log(_result.value);
+}
 
-// var _it2 = fibonacci();
-// for (const fi of _it2) {
-//     console.log(fi);
-// }
+var _it2 = fibonacci();
+for (const fi of _it2) {
+    console.log(fi);
+}

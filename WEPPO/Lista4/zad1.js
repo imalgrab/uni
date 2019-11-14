@@ -2,6 +2,7 @@ const Tree = function (v, l, r) {
     this.v = v;
     this.l = l;
     this.r = r;
+    
 }
 
 function* createGenerator(tree) {
