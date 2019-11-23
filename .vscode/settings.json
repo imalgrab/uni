@@ -11,6 +11,8 @@
         "unordered_set": "cpp",
         "string_view": "cpp",
         "initializer_list": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "*.tcc": "cpp",
+        "stdexcept": "cpp"
     }
 }

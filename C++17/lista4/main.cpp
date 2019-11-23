@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
     vector<double> v = {1.25, 3.14, 7.6, 4.2, 31.11, 7.2, 0.3, 0.15, 492.4};
-    list<string> l = {"banan", "ananas", "gruszka", "malina"};
+    list<string> l = {"banan", "ananas", "gruszka", "malina", "pomidor"};
     set<int> s = {4, 2, 7, 3, 100, 33, 1, 0, 55};
 
     //zad. 1
@@ -42,12 +42,28 @@ int main(int argc, char const *argv[]) {
         cout << "\n";
     }(v, 3, 1);
 
+    [](list<string> l, int k, int p) {
+        list<string>::iterator i;
+        int idx = 0;
+        for (i = l.begin(); i != l.end(); i++) {
+            if (idx >= p && (idx - p) % k == 0) {
+                cout << *i << "\t";
+            }
+            idx++;
+        }
+        cout << "\n";
+    }(l, 2, 0);
+
     //zad.3
     [](vector<double> v) {
         int s = 0;
-        for (int i = 0; i < v.size(); i++) {
-            s += v[i];
+        // for (int i = 0; i < v.size(); i++) {
+        //     s += v[i];
+        // }
+        for (auto &&k : v) {
+            s += k;
         }
+
         cout << s * 1.0f / v.size() << "\n";
     }(v);
 

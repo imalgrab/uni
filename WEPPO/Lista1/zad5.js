@@ -28,3 +28,6 @@ for (let i = 10; i <= 42; i++) {
     console.timeEnd('fibIter : ' + i);
     console.log();
 }
+
+
+
