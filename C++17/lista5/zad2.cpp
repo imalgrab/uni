@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <queue>
 #include <vector>
 
 using namespace std;
@@ -158,10 +159,62 @@ class Graph {
             del_edge(index, d_id);  //usun krawedzie
         }
     }
-    int size() {
-        return v;
+    bool pathExists(int v_id, int d_id) {
+        if (!isValidID(v_id) || !isValidID(d_id))
+            return false;
+        if (v_id == d_id)
+            return true;
+        bool visited[v];
+        for (int i = 0; i < v; i++) {
+            visited[i] = false;
+        }
+        queue<int> q;
+        visited[v_id] = true;
+        q.push(v_id);
+        while (!q.empty()) {
+            int n_id = q.front();
+            q.pop();
+            for (auto p : adj[n_id]) {
+                n_id = p.first;
+                if (!visited[n_id]) {
+                    if (n_id == d_id)
+                        return true;
+                    visited[n_id] = true;
+                    q.push(n_id);
+                }
+            }
+        }
+        return false;
     }
-    void print_neighbours(string v_name) {
+    bool pathExists(string v_name, string d_name) {
+        if (!vertexExists(v_name) || !vertexExists(d_name))
+            return false;
+        if (v_name == d_name)
+            return true;
+        bool visited[v];
+        for (int i = 0; i < v; i++) {
+            visited[i] = false;
+        }
+        queue<int> q;
+        int v_id = verticesNameIdx[v_name];
+        visited[v_id] = true;
+        q.push(v_id);
+        while (!q.empty()) {
+            int n_id = q.front();
+            q.pop();
+            for (auto p : adj[n_id]) {
+                n_id = p.first;
+                if (!visited[n_id]) {
+                    if (n_id == verticesNameIdx[d_name])
+                        return true;
+                    visited[n_id] = true;
+                    q.push(n_id);
+                }
+            }
+        }
+        return false;
+    }
+    void printNeighbours(string v_name) {
         if (vertexExists(v_name)) {
             int v_id = verticesNameIdx[v_name];
             cout << v_name << " : ";
@@ -171,11 +224,20 @@ class Graph {
             cout << "\n";
         }
     }
-    void print_neighbours(int v_id) {
+    void printNeighbours(int v_id) {
         if (isValidID(v_id)) {
             cout << v_id << " : ";
             for (auto p : adj[v_id]) {
                 cout << "{" << p.first << ", " << p.second << "} ";
+            }
+            cout << "\n";
+        }
+    }
+    void print() {
+        for (int i = 0; i < adj.size(); i++) {
+            cout << verticesIdxName[i] << " : ";
+            for (auto pDestWeight : adj[i]) {
+                cout << "{" << verticesIdxName[pDestWeight.first] << ", " << pDestWeight.second << "} ";
             }
             cout << "\n";
         }
@@ -196,16 +258,19 @@ int main() {
     g.add_edge("a", "y", 22);
     g.change_weight("a", "y", 33);
 
-    g.print_neighbours("a");
-    g.print_neighbours(4);
-    g.print_neighbours("c");
+    g.printNeighbours("a");
+    g.printNeighbours(4);
+    g.printNeighbours("c");
 
     g.del_vertex(1);
     g.del_vertex("c");
     cout << "\n";
 
-    g.print_neighbours("b");
-    g.print_neighbours("z");
+    g.printNeighbours("b");
+    g.printNeighbours("z");
+
+    cout << g.pathExists(0, 4) << "\n";
+    cout << g.pathExists("x", "z");
 
     return 0;
 }
