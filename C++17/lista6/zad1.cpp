@@ -16,19 +16,20 @@ void rand_perm(T arr[], int n) {
     }
 }
 void uni(int n) {
-    default_random_engine dre;
-    dre.seed(time(NULL));
-    uniform_real_distribution<float> uid;
+    random_device rd;                                //Will be used to obtain a seed for the random number engine
+    mt19937 gen(rd());                               //Standard mersenne_twister_engine seeded with rd()
+    uniform_real_distribution<float> urd(1.0, 2.0);  // [a, b)
     ofstream file;
     file.open("uni.csv");
     for (int i = 0; i < n; i++) {
-        file << uid(dre) << "\n";
+        file << urd(gen) << "\n";
     }
     file.close();
 }
 void bin(int n) {
     default_random_engine dre;
-    dre.seed(time(NULL));
+    random_device rd;
+    dre.seed(rd());
     binomial_distribution<int> bd(1000, 0.5);
     ofstream file;
     file.open("bin.csv");
@@ -39,7 +40,8 @@ void bin(int n) {
 }
 void norm(int n) {
     default_random_engine dre;
-    dre.seed(time(NULL));
+    random_device rd;
+    dre.seed(rd());
     normal_distribution<double> nd;
     ofstream file;
     file.open("norm.csv");
@@ -63,4 +65,3 @@ int main() {
     norm(1000);
     return 0;
 }
-
