@@ -28,9 +28,8 @@ void uni(int n) {
 }
 void bin(int n) {
     default_random_engine dre;
-    random_device rd;
-    dre.seed(rd());
-    binomial_distribution<int> bd(1000, 0.5);
+    dre.seed(time(NULL));
+    binomial_distribution<int> bd(n, 0.5);
     ofstream file;
     file.open("bin.csv");
     for (int i = 0; i < n; i++) {
@@ -40,8 +39,7 @@ void bin(int n) {
 }
 void norm(int n) {
     default_random_engine dre;
-    random_device rd;
-    dre.seed(rd());
+    dre.seed(time(nullptr));
     normal_distribution<double> nd;
     ofstream file;
     file.open("norm.csv");

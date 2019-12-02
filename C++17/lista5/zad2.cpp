@@ -18,6 +18,8 @@ class Vertex {
     }
 };
 
+// ostatni wrzucic na miejsce usunietego
+
 class Graph {
    private:
     int v;

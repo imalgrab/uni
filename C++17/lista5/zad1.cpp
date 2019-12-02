@@ -80,6 +80,7 @@ list<string> convert_to_rpn(string exp) {
         string curr_char = *i;
         if (isdigit(curr_char)) {
             q.push(curr_char);
+            q.push(" ");
         }
         if (isoperator(curr_char)) {
             if (!s.empty()) {
