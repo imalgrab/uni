@@ -2,54 +2,63 @@
 #include <iostream>
 #include <tuple>
 #include <vector>
+#include <list>
 
 using namespace std;
 
-class GreatPole {
-   private:
+class GreatPole
+{
+private:
     string name;
     int age;
     double weight;
     double height;
 
-   public:
+public:
     GreatPole(string n, int a, double w, double h);
     int getAge();
     double getWeight();
     double getHeight();
     double bmi();
-    friend ostream& operator<<(ostream& os, const GreatPole& gp);
+    friend ostream &operator<<(ostream &os, const GreatPole &gp);
 };
 
-GreatPole::GreatPole(string n, int a, double w, double h) {
+GreatPole::GreatPole(string n, int a, double w, double h)
+{
     name = n;
     age = a;
     weight = w;
     height = h;
 }
 
-int GreatPole::getAge() {
+int GreatPole::getAge()
+{
     return age;
 }
 
-double GreatPole::getWeight() {
+double GreatPole::getWeight()
+{
     return weight;
 }
 
-double GreatPole::getHeight() {
+double GreatPole::getHeight()
+{
     return height;
 }
 
-double GreatPole::bmi() {
+double GreatPole::bmi()
+{
     return weight / (height / 100 * height / 100);
 }
 
-ostream& operator<<(ostream& os, const GreatPole& gp) {
+ostream &operator<<(ostream &os, const GreatPole &gp)
+{
     os << gp.name << " ma " << gp.age << " lat, wazy " << gp.weight << " kg, mierzac " << gp.height << " cm";
     return os;
 }
 
-int main() {
+int main()
+{
     //nazwa, wiek, waga, wzrost
     vector<GreatPole> greatPoles{
         GreatPole("Adam Malysz", 32, 84.5, 179),
@@ -65,7 +74,8 @@ int main() {
 
     sort(greatPoles.begin(), greatPoles.end(), [](GreatPole x, GreatPole y) { return x.bmi() < y.bmi(); });
 
-    for (auto gp : greatPoles) {
+    for (auto gp : greatPoles)
+    {
         cout << gp << "\n";
     }
 

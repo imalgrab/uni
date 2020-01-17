@@ -4,13 +4,14 @@
 
 using namespace std;
 
-class RgbPoint {
-   private:
+class RgbPoint
+{
+private:
     double x, y;
     int r, g, b;
     string name;
 
-   public:
+public:
     RgbPoint(double cx, double cy, int rx, int gx, int bx, string n);
     double getX();
     double getY();
@@ -18,10 +19,11 @@ class RgbPoint {
     int getG();
     int getB();
     double getLuminance();
-    friend ostream& operator<<(ostream& os, const RgbPoint& rgbp);
+    friend ostream &operator<<(ostream &os, const RgbPoint &rgbp);
 };
 
-RgbPoint::RgbPoint(double cx, double cy, int rx, int gx, int bx, string n) {
+RgbPoint::RgbPoint(double cx, double cy, int rx, int gx, int bx, string n)
+{
     x = cx;
     y = cy;
     r = rx;
@@ -30,29 +32,34 @@ RgbPoint::RgbPoint(double cx, double cy, int rx, int gx, int bx, string n) {
     name = n;
 }
 
-double RgbPoint::getX() {
+double RgbPoint::getX()
+{
     return x;
 }
 
-double RgbPoint::getY() {
+double RgbPoint::getY()
+{
     return y;
 }
 
-double RgbPoint::getLuminance() {
+double RgbPoint::getLuminance()
+{
     return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-ostream& operator<<(ostream& os, const RgbPoint& rgbp) {
+ostream &operator<<(ostream &os, const RgbPoint &rgbp)
+{
     os << rgbp.name << " : (" << rgbp.x << "," << rgbp.y << ")";
     return os;
 }
 
-int main() {
+int main()
+{
     list<RgbPoint> rgbs{
-        RgbPoint(3.0, 3.0, 0, 1, 1, "a"),          //I
-        RgbPoint(-3.0, 3.0, 0, 2, 3, "b"),         //II
-        RgbPoint(-3.0, -3.0, 0, 0, 0, "c"),        //III
-        RgbPoint(3.0, -3.0, 255, 255, 255, "d")};  //IV
+        RgbPoint(3.0, 3.0, 0, 1, 1, "a"),         //I
+        RgbPoint(-3.0, 3.0, 0, 2, 3, "b"),        //II
+        RgbPoint(-3.0, -3.0, 0, 0, 0, "c"),       //III
+        RgbPoint(3.0, -3.0, 255, 255, 255, "d")}; //IV
 
     list<RgbPoint> fst;
     list<RgbPoint> snd;
