@@ -9,7 +9,7 @@ var config = {
 };
 
 
-(async function () {
+(async function() {
     try {
         let pool = await sql.connect(config)
         let insertExample = await pool.request().query('insert into OSOBA (Imie, Nazwisko, Wiek, Plec) values (\'Anna\', \'Komorska\', 36, \'M\')');
