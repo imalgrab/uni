@@ -18,7 +18,7 @@ struct Lucas<1> {
 };
 
 int main() {
-    Lucas<5> lucas;
+    Lucas<44> lucas;
     cout << lucas.value << "\n";
     return 0;
 }

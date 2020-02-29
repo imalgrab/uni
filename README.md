@@ -1,1 +1,1 @@
-Some lines of code I wrote for my classes at II UWr
+Sztuczna Inteligencja 2020
