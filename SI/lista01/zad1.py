@@ -183,20 +183,14 @@ def findMinMoves(color, wk, wr, bk, debug):
 
 
 def solve(debug, data, out):
+    data = data[0].split()
+    color = data[0]
+    wk = convertPosition(data[1])
+    wr = convertPosition(data[2])
+    bk = convertPosition(data[3])
     if debug:
-        data = data[0].split()
-        color = data[0]
-        wk = convertPosition(data[1])
-        wr = convertPosition(data[2])
-        bk = convertPosition(data[3])
         print(findMinMoves(color, wk, wr, bk, debug))
-
     else:
-        data = data[0].split()
-        color = data[0]
-        wk = convertPosition(data[1])
-        wr = convertPosition(data[2])
-        bk = convertPosition(data[3])
         res = str(findMinMoves(color, wk, wr, bk, debug))
         out.write(res)
         out.write('\n')
@@ -207,7 +201,7 @@ with open('zad1_input.txt', 'r') as f:
 
 out = open("zad1_output.txt", 'w')
 
-debug = False
+debug = True
 
 solve(debug, data, out)
 

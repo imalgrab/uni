@@ -2,7 +2,7 @@ def opt_dist(l, d):
     s = [0]
     for i in range(len(l)):
         s.append(s[i] + l[i])
-    for i in range(len(l) - d):
+    for i in range(len(l) - d + 1):
         left = i
         right = i + d - 1
         curr = s[right+1] - s[left]
