@@ -112,7 +112,7 @@ def checkmated(curr):
     return False
 
 
-def findMinMoves(color, wk, wr, bk):
+def findMinMoves(color, wk, wr, bk, debug):
     q = queue.Queue()
     states.clear()
     s = State(color, wk, wr, bk, 0)
@@ -120,15 +120,15 @@ def findMinMoves(color, wk, wr, bk):
     q.put(s)
     while not q.empty():
         curr = q.get()
-        if (checkmated(curr)):
-            # ls = [(curr.color, curr.pos_wk, curr.pos_wr, curr.pos_bk)]
-            # s = prev[curr]
-            # while s != 0:
-            #     ls.append((s.color, s.pos_wk, s.pos_wr, s.pos_bk))
-            #     s = prev[s]
-            # for l in ls[::-1]:
-            #     print(l)
-
+        if checkmated(curr):
+            if debug:
+                ls = [(curr.color, curr.pos_wk, curr.pos_wr, curr.pos_bk)]
+                s = prev[curr]
+                while s != 0:
+                    ls.append((s.color, s.pos_wk, s.pos_wr, s.pos_bk))
+                    s = prev[s]
+                for l in ls[::-1]:
+                    print(l)
             return curr.n
         if curr.color == 'black':
             for i in range(8):
@@ -189,18 +189,17 @@ def solve(debug, data, out):
         wk = convertPosition(data[1])
         wr = convertPosition(data[2])
         bk = convertPosition(data[3])
-        out.write(str(findMinMoves(color, wk, wr, bk)))
+        print(findMinMoves(color, wk, wr, bk, debug))
 
     else:
-        for line in data:
-            line = line.split()
-            color = line[0]
-            wk = convertPosition(line[1])
-            wr = convertPosition(line[2])
-            bk = convertPosition(line[3])
-            res = str(findMinMoves(color, wk, wr, bk))
-            out.write(res)
-            out.write('\n')
+        data = data[0].split()
+        color = data[0]
+        wk = convertPosition(data[1])
+        wr = convertPosition(data[2])
+        bk = convertPosition(data[3])
+        res = str(findMinMoves(color, wk, wr, bk, debug))
+        out.write(res)
+        out.write('\n')
 
 
 with open('zad1_input.txt', 'r') as f:
@@ -208,7 +207,7 @@ with open('zad1_input.txt', 'r') as f:
 
 out = open("zad1_output.txt", 'w')
 
-debug = True
+debug = False
 
 solve(debug, data, out)
 
