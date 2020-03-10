@@ -2,17 +2,18 @@ import random
 
 
 def opt_dist(l, d):
-    ls = [1] * d + [0] * (len(l)-d)
-    min_swaps = len(l)
-    for _ in range(len(l) - d + 1):
-        cnt = 0
-        for j in range(len(l)):
-            if l[j] != ls[j]:
-                cnt += 1
-        if cnt < min_swaps:
-            min_swaps = cnt
-        ls = [0] + ls[:-1]
-    return min_swaps
+    s = [0]
+    for i in range(len(l)):
+        s.append(s[i] + l[i])
+    res = len(l)
+    for i in range(len(l) - d + 1):
+        left = i
+        right = i + d - 1
+        before = s[left]  # suma jedynek w (0, l-1)
+        curr = s[right+1] - s[left]  # suma jedynek w (l, r)
+        after = s[len(l)] - s[right+1]  # suma jedynek w (r+1, n-1)
+        res = min(res, before + after + d - curr)
+    return res
 
 
 def is_valid(row, val):
@@ -60,33 +61,47 @@ def printer(rows):
 
 # lepiej losowac lub wierssz lub kolumne
 
+
 def try_color(i, rows, cols):
-    if i % 23 == 0:
+    if i % 63 == 0:
         swap(random.randint(0, 6), random.randint(0, 6), rows, cols)
     else:
-        r = random.randint(0, 6)
-        while is_valid(rows[r], specs[0][r]):
-            r = random.randint(0, 6)
+        f = random.randint(0, 1)
         maxVal = -1
         maxInd = -1
-        for j in range(7):
-            before = opt_dist(cols[j], specs[1][j]) + \
-                opt_dist(rows[r], specs[0][r])
-
-            swap(r, j, rows, cols)
-
-            after = opt_dist(cols[j], specs[1][j]) + \
-                opt_dist(rows[r], specs[0][r])
-
-            if before - after > maxVal:
-                maxVal = before - after
-                maxInd = j
-
-            swap(r, j, rows, cols)
-        swap(r, maxInd, rows, cols)
+        r = random.randint(0, 6)
+        if f:
+            while(is_valid(rows, specs[0][r])):
+                r = random.randint(0, 6)
+            for j in range(7):
+                before = opt_dist(cols[j], specs[1][j]) + \
+                    opt_dist(rows[r], specs[0][r])
+                swap(r, j, rows, cols)
+                after = opt_dist(cols[j], specs[1][j]) + \
+                    opt_dist(rows[r], specs[0][r])
+                if before - after > maxVal:
+                    maxVal = before - after
+                    maxInd = j
+                swap(r, j, rows, cols)
+            swap(r, maxInd, rows, cols)
+        else:
+            while(is_valid(cols, specs[1][r])):
+                r = random.randint(0, 6)
+            for j in range(7):
+                before = opt_dist(cols[r], specs[1][r]) + \
+                    opt_dist(rows[j], specs[0][j])
+                swap(j, r, rows, cols)
+                after = opt_dist(cols[r], specs[1][r]) + \
+                    opt_dist(rows[j], specs[0][j])
+                if before - after > maxVal:
+                    maxVal = before - after
+                    maxInd = j
+                swap(j, r, rows, cols)
+            swap(maxInd, r, rows, cols)
 
 
 def solve(specs):
+    prev = specs
     rows = [[0 for i in range(7)] for _ in range(7)]
     cols = [[0 for i in range(7)] for _ in range(7)]
     n = 500
@@ -98,9 +113,9 @@ def solve(specs):
             print(i)
             return res
         if i == 499:
-            print('i=499')
             rows = [[0 for i in range(7)] for _ in range(7)]
             cols = [[0 for i in range(7)] for _ in range(7)]
+            specs = prev
             i = 0
         i += 1
 

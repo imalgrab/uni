@@ -201,7 +201,7 @@ with open('zad1_input.txt', 'r') as f:
 
 out = open("zad1_output.txt", 'w')
 
-debug = True
+debug = False
 
 solve(debug, data, out)
 
