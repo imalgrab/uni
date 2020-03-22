@@ -1,0 +1,104 @@
+Igor Malgrab
+Zadania: 1, 2, 3, 4, 6
+Punkty: 6
+========================
+-- zadanie 1
+(a)
+rows(n-1, n, n, ..., n, n-1)
+cols(n-1, n, n, ..., n, n-1)
+W pierwszym i ostatnim wierszu oraz w pierwszej i ostatniej kolumnie chcemy mieć niezamalowaną kratkę, dokładnie dwa sposoby:
+1)		2)
+.####		####.
+#####		#####
+#####		#####
+#####		#####
+####.		.####
+		
+(b)
+rows(1, 1, 1, ..., 1, 1)
+cols(1, 1, 1, ..., 1, 1)
+W każdym z wierszy i w każdej z kolumn chcemy mieć dokładnie jedną zamalowaną kratkę, a więc zamalowując kratki w kolejnych kolumnach musimy brać pod uwagę poprzednie kolumny.
+Coś jak rozmieszczanie hetmanów na szachownicy ze slajdów do wykładu.
+.#...	na N sposobów
+...#.	na N-1 sposobów
+..#..	...              } N * (N-1) * (N-2) * ... * 2 * 1 = N! > N
+#....	na 2 sposoby
+....#	na 1 sposób
+
+-- zadanie 2
+stan: wierzchołek-miasto W, w którym aktualnie przebywamy oraz ilość paliwa w baku, czy znajduje się na nim stacja, sąsiedzi W
+
+model: wierzchołki-miasta osiągalne z W (sąsiedzi), akcje to przejazd do wybranego z osiągalnych sąsiadów i zaktualizowanie ilości paliwa w baku, jeżeli to możliwe to zatankowanie
+
+-- zadanie 3
+np. algorytm Dijkstry dla źródła S da nam najkrótsze ścieżki z S do każdego wierzchołka (minimalną ilość paliwa spaloną, aby dotrzeć).
+Nie uwzględniamy tutaj tankowania
+
+-- zadanie 4
+np. algorytm Dijkstry, który nie rozwija wierzchołków, gdy brakuje paliwa na przejście danej krawędzi (czyli tych, do których się nie da dotrzeć).
+Zamiast tego sprawdzamy kolejny wierzchołek z kolejki - to zapobiega sytuacjom, kiedy jesteśmy bez benzyny i nie możemy zatankować
+
+-- zadanie 6
+
+1. ok. 7%
+2. iterując co 1 to ok. 130, a iterując co 10-20 ok. 190
+rozwiązanie:
+
+import random
+import time
+
+
+def queens(n):
+    solved = False
+    cnt = 0
+    while not solved:
+        cnt += 1
+        board = [['0' for _ in range(n)] for _ in range(n)]
+        for i in range(n):
+            av = [row for row in range(n) if board[row][i] == '0']
+            if av == []:
+                break
+            else:
+                r = random.choice(av)
+                board[r][i] = '1'
+                if i == n - 1:
+                    solved = True
+                    break
+                u = r+1
+                l = r-1
+                for j in range(i+1, n):
+                    board[r][j] = '#'
+                    if u < n:
+                        board[u][j] = '#'
+                        u += 1
+                    if l >= 0:
+                        board[l][j] = '#'
+                        l -= 1
+    return (board, cnt)
+
+# (a)
+
+# N = 20000
+# num = 0
+# for i in range(N):
+#     cnt = queens(board)
+#     if cnt == 1:
+#         num += 1
+# print(f'{num / N * 100}%')
+
+# (b)
+
+start = time.time()
+end = time.time() - start
+i = 40
+while end <= 5:
+    i += 1
+    start = time.time()
+    d = queens(i)
+    end = time.time() - start
+    # print('n:', i)
+    # print('time:', end)
+    # print('restarts:', d[1])
+print('result:', i)
+
+
