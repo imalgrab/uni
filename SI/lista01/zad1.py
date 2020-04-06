@@ -35,7 +35,7 @@ def isValidPosition(who, pos, wk, wr, bk):
             wk_y = wk[1] + ys[i]
             if (wk_x, wk_y) == pos:
                 return False
-        # if x€[1,8] and y€[1,8] it's fine
+        # if x[1,8] and y[1,8] it's fine
         return (1, 1) <= pos <= (8, 8)
     if who == 'white_king':
         if (pos, wr, bk) in states:
@@ -50,7 +50,7 @@ def isValidPosition(who, pos, wk, wr, bk):
             bk_y = bk[1] + ys[i]
             if (bk_x, bk_y) == pos:
                 return False
-        # if x€[1,8] and y€[1,8] it's fine
+        # if x[1,8] and y[1,8] it's fine
         return (1, 1) <= pos <= (8, 8)
     if who == 'white_rook':
         if (wk, pos, bk) in states:
