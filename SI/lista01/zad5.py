@@ -59,8 +59,6 @@ def printer(rows):
         print()
     return res
 
-# lepiej losowac lub wierssz lub kolumne
-
 
 def try_color(i, rows, cols):
     if i % 63 == 0:
