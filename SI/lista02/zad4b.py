@@ -44,18 +44,18 @@ def rand_moves(s, n):
 
 
 def init(b):
-    positions = []
+    positions = set()
     n = len(b)
     m = len(b[0])
     for i in range(n):
         board.append(b[i])
         for j in range(m):
             if b[i][j] == 'S':
-                positions.append((i, j))
+                positions.add((i, j))
             elif b[i][j] == 'G':
                 goals.add((i, j))
             elif b[i][j] == 'B':
-                positions.append((i, j))
+                positions.add((i, j))
                 goals.add((i, j))
     return state(positions, "")
 
@@ -76,8 +76,6 @@ def bfs(s):
 
     while not q.empty():
         curr = q.get()
-        if len(curr.moves) > 150:
-            return "UPS!!! " + curr.moves
         if is_final(curr):
             return curr.moves
         adj = get_adj(curr)
@@ -91,9 +89,10 @@ def start(data):
     goals.clear()
     board.clear()
     init_state = init(data)
-    mid_state = rand_moves(init_state, 30)
-    final_state = bfs(mid_state)
-    print(final_state)
+    # mid_state = rand_moves(init_state, 30)
+    print(init_state.positions, init_state.moves)
+    # final_state = bfs(mid_state)
+    # print(final_state)
     # out.write(final_state)
     # out.write('\n')
 
