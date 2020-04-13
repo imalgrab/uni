@@ -1,6 +1,5 @@
 import queue
 import random
-import time
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, 1, -1]
