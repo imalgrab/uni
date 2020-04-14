@@ -79,13 +79,11 @@ def get_adj(s):
 
 def bfs(s):
     visited = set()
-    cntr = 0
     shortest = len(s.positions)
     q = queue.Queue()
     q.put(s)
     visited.add(tuple(s.positions))
     while not q.empty():
-        print(cntr)
         curr = q.get()
         if is_final(curr):
             return curr.moves
