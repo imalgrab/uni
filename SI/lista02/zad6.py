@@ -70,7 +70,7 @@ def gen_dists(n, m):
 
 def heur(s):
     ds = [dist[p] for p in s.positions]
-    return sum(ds) + len(s.moves)
+    return 1.037 * max(ds) + len(s.moves)
 
 
 def move(s, d):

@@ -10,7 +10,6 @@ G goal
 + player on G
 """
 
-
 # (player_position, boxes_positions)
 VISITED = set()
 dx = [-1, 1, 0, 0]

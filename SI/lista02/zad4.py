@@ -63,7 +63,7 @@ def get_adj(s):
     adj = []
     for i in range(4):
         ps = set()
-        ms = ""
+        ms = ''
         for p in s.positions:
             x = p[0] + dx[i]
             y = p[1] + dy[i]
