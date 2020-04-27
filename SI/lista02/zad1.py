@@ -2,6 +2,13 @@ import random
 ITERATIONS = 500
 
 
+def is_completed(rows, row_specs):
+    for i in range(len(rows)):
+        if sum(rows[i]) != row_specs[i][1]:
+            return False
+    return True
+
+
 def opt_dist(l, d):
     s = [0]
     for i in range(len(l)):
@@ -37,43 +44,52 @@ def try_color(i, n, m, rows, cols):
         if coinflip:
             r = random.randint(0, n-1)
             for i in range(m):
+                pass
 
 
-def solve(n, m, specs):
-    specification = specs
-    rows = [[0 for _ in range(m)] for _ in range(n)]
-    cols = [[0 for _ in range(n)] for _ in range(m)]
+def parse(data):
+    size = data[0].split()
+    n = int(size[0])
+    rows = []
+    cols = []
+    for i in range(1, n+1):
+        d = data[i].split()
+        row = list(map(int, d))
+        s_row = sum(row)
+        rows.append((row, s_row))
+    for j in range(n+1, len(data)):
+        d = data[j].split()
+        col = list(map(int, d))
+        s_col = sum(col)
+        cols.append((col, s_col))
+    return (rows, cols)
+
+
+def solve(data):
+    rows, cols = parse(data)
+    SPECIFICATION = (rows, cols)
+    n = len(rows)
+    m = len(cols)
+    r = [[0 for _ in range(m)] for _ in range(n)]
+    c = [[0 for _ in range(n)] for _ in range(m)]
     i = 0
     while i < ITERATIONS:
-        try_color(i, n, m, rows, cols)
-        if is_completed(rows, cols, specs):
-            nonogram = print_nonogram(rows)
-            return nonogram
-        if i == 499:
-            specs = specification
-            i = 0
-            rows = [[0 for _ in range(m)] for _ in range(n)]
-            cols = [[0 for _ in range(n)] for _ in range(m)]
-    i += 1
+        if i == ITERATIONS - 1:
+            rows, cols = SPECIFICATION
+            r = [[0 for _ in range(m)] for _ in range(n)]
+            c = [[0 for _ in range(n)] for _ in range(m)]
+        i += 1
 
 
 with open('zad_input.txt') as f:
     data = f.read().strip().split('\n')
 
-
-size = data[0].split()
-n = int(size[0])
-m = int(size[1])
-rows = []
-cols = []
-for i in range(1, n+1):
-    d = data[i].split()
-    row = list(map(int, d))
-    rows.append(row)
-for j in range(n+1, len(data)):
-    d = data[j].split()
-    col = list(map(int, d))
-    cols.append(col)
-specs = rows, cols
-
-solve(n, m, specs)
+rows, cols = parse(data)
+r = [
+    [1, 1, 1, 1, 1],
+    [1, 0, 1, 0, 1],
+    [0, 1, 1, 1, 0],
+    [1, 1, 0, 1, 1],
+    [1, 1, 1, 1, 1],
+]
+print(is_completed(r, rows))
