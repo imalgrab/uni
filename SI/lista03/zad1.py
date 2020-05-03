@@ -22,6 +22,7 @@ def draw(nonogram, n, m):
             elif nonogram[i][j] == 0:
                 drawing += '.'
         drawing += '\n'
+    drawing += '\n'
     return drawing
 
 
@@ -41,20 +42,25 @@ def solved(nonogram, n, m):
 
 
 def check(rc, spec):
-    rc = [0] + rc
+    rc = [0] + rc + [0]
     n = len(rc)
     m = len(spec)
-    dp = [[False] * (m + 1) for _ in range(n)]
+    dp = [[False] * (m + 1) for _ in range(n + 1)]
     dp[0][0] = True
-    for i in range(n - 1):
-        for j in range(m):
+
+    for i in range(n-1):
+        for j in range(m + 1):
             if dp[i][j]:
+
+                # 1. idziemy o 0 blokow
                 if rc[i + 1] != 1:
                     dp[i+1][j] = True
-                block = i + spec[j]
-                if j < m and block < n and rc[block] != 1 and 0 not in rc[i+1:block]:
-                    dp[block][j+1] = True
-    return dp[n-1][m-1]
+
+                # 2. idziemy o 1 blok
+                if j < m and i+spec[j]+1 < n and rc[i+spec[j]+1] != 1 and 0 not in rc[i+1:i+spec[j]+1]:
+                    dp[i+spec[j]+1][j+1] = True
+
+    return dp[n-1][m]
 
 
 def is_good_coloring(i, j, nonogram, rows, cols):

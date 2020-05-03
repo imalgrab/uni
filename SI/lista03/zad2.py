@@ -1,3 +1,6 @@
+from copy import copy
+
+
 def parse(spec):
     size = spec[0].split()
     h = int(size[0])
@@ -74,22 +77,46 @@ def try_color(i, j, nonogram, rows, cols):
             nonogram[i][j] = 0
 
 
-def solve(data):
+def unassigned(nonogram, n, m):
+    for i in range(n):
+        for j in range(m):
+            if nonogram[i][j] == ' ':
+                return (i, j)
+    return False
+
+
+def solve(nonogram, n, m, rows, cols):
+    for i in range(n):
+        for j in range(m):
+            try_color(i, j, nonogram, rows, cols)
+    return nonogram
+
+
+def backtrack(nonogram, n, m, rows, cols):
+    if solved(nonogram, n, m):
+        return nonogram
+    else:
+        if unassigned(nonogram, n, m) != False:
+            x, y = unassigned(nonogram, n, m)
+            curr = solve(nonogram, n, m, rows, cols)
+            for c in [0, 1]:
+                curr[x][y] = c
+                if is_good_coloring(x, y, curr, rows, cols):
+                    backtrack(curr, n, m, rows, cols)
+
+
+def start(data):
     rows, cols = parse(data)
     n, m = len(rows), len(cols)
     nonogram = [[' '] * m for _ in range(n)]
-    while not solved(nonogram, n, m):
-        for i in range(n):
-            for j in range(m):
-                try_color(i, j, nonogram, rows, cols)
-    return nonogram
+    return backtrack(nonogram, n, m, rows, cols)
 
 
 with open('zad_input.txt') as f:
     data = f.read().strip().split('\n')
 
 out = open('zad_output.txt', 'w')
-nonogram = solve(data)
+nonogram = start(data)
 result = draw(nonogram, len(nonogram), len(nonogram[0]))
 out.write(result)
 out.close()
