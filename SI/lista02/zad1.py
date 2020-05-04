@@ -41,7 +41,7 @@ def solved(nonogram, n, m):
 
 
 def check(rc, spec):
-    rc = [0] + rc
+    rc = [0] + rc + [0]
     n = len(rc)
     m = len(spec)
     dp = [[False] * (m + 1) for _ in range(n)]
@@ -51,10 +51,10 @@ def check(rc, spec):
             if dp[i][j]:
                 if rc[i + 1] != 1:
                     dp[i+1][j] = True
-                block = i + spec[j]
+                block = i + spec[j] + 1
                 if j < m and block < n and rc[block] != 1 and 0 not in rc[i+1:block]:
                     dp[block][j+1] = True
-    return dp[n-1][m-1]
+    return dp[n-1][m]
 
 
 def is_good_coloring(i, j, nonogram, rows, cols):

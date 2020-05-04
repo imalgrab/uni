@@ -90,8 +90,7 @@ def solve(data):
                 try_color(i, j, nonogram, rows, cols)
     return nonogram
 
-
-with open('zad_input.txt') as f:
+with open('zad_input.txt', 'r') as f:
     data = f.read().strip().split('\n')
 
 out = open('zad_output.txt', 'w')
@@ -99,3 +98,4 @@ nonogram = solve(data)
 result = draw(nonogram, len(nonogram), len(nonogram[0]))
 out.write(result)
 out.close()
+
